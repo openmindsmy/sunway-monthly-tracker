@@ -133,6 +133,7 @@
 <div class="tabs" id="viewTabs">
   <button data-v="er" aria-pressed="true">Engagement rate</button>
   <button data-v="fg" aria-pressed="false">Follower growth</button>
+  <button data-v="vv" aria-pressed="false">Video views</button>
   <button data-v="ga" aria-pressed="false">Website sessions</button>
 </div>
 
@@ -278,19 +279,23 @@ const PERIODS = {
     p:{facebook:[1192928,147721,5284],instagram:[644680,58764,3394],threads:[82134,11086,125],audience_network:[92116,4974,821],tiktok:[364497,8486,3062]},
     fol:{facebook:548,instagram:661,linkedin:2668,tiktok:3167},
     ga:{visits:28636,users:27013,engRate:20.27,avgSec:40.5},
+    vv:{o:{facebook:33772,instagram:24162,linkedin:1617,tiktok:2038},p:{facebook:838933,instagram:397760,threads:26223,tiktok:359832}},
     prev:{o:{facebook:[219149,3769,12],instagram:[36097,2007,11],linkedin:[77985,33317,12],tiktok:[1796,74,4]},
       p:{facebook:[1901809,199104,9233],instagram:[994043,59014,4734],threads:[31760,147,28],audience_network:[158602,6765,1170],tiktok:[908289,9974,3911]},
       fol:{facebook:948,instagram:941,linkedin:2657,tiktok:2952},
-      ga:{visits:41507,users:37785,engRate:18.00,avgSec:37.7}}},
+      ga:{visits:41507,users:37785,engRate:18.00,avgSec:37.7},
+      vv:{o:{facebook:152753,instagram:67167,linkedin:1409,tiktok:2010},p:{facebook:1134213,instagram:583171,tiktok:897595}}}},
   last7:   {label:"Last 7 days",   range:"25 to 31 Aug 2026", vs:"the 7 days before",
     o:{facebook:[500,15,1],instagram:[361,24,1],linkedin:[795,59,1],tiktok:[0,2,1]},
     p:{facebook:[337312,38659,1586],instagram:[158287,10376,873],threads:[67543,5634,113],audience_network:[37387,1090,148],tiktok:[19578,1133,420]},
     fol:{facebook:138,instagram:124,linkedin:236,tiktok:485},
     ga:{visits:11050,users:10547,engRate:18.33,avgSec:21.1},
+    vv:{o:{facebook:665,instagram:640,linkedin:0,tiktok:324},p:{facebook:180424,instagram:29376,threads:13763,tiktok:19315}},
     prev:{o:{facebook:[10873,152,2],instagram:[4000,277,2],linkedin:[7664,1067,2],tiktok:[261,0,1]},
       p:{facebook:[306082,43077,1433],instagram:[183973,14026,1014],threads:[13243,5446,11],audience_network:[29585,637,87],tiktok:[42419,2048,700]},
       fol:{facebook:148,instagram:142,linkedin:531,tiktok:805},
-      ga:{visits:6576,users:6350,engRate:16.21,avgSec:34.4}}}
+      ga:{visits:6576,users:6350,engRate:16.21,avgSec:34.4},
+      vv:{o:{facebook:7899,instagram:6898,linkedin:0,tiktok:298},p:{facebook:231202,instagram:106887,threads:12460,tiktok:41870}}}}
 };
 let period = "mtd";
 // the two objects the views read: current and comparison, whichever preset is selected
@@ -460,6 +465,46 @@ const LP = {
  "2026-08":[["/building-resilient-communities-beyond-corporate-responsibility",13834,44.19,4.58,78.67],["/fulfilling-the-golden-years",3410,10.89,4.68,85.28],["/",769,2.46,11.73,69.83],["/from-junior-executive-to-group-leader-guided-by-her-father-and-a-belief-in-family-harmony",456,1.46,78.74,47.15],["/a-sanctuary-for-the-golden-years",285,0.91,11.70,57.54],["/sunway-city-iskandar-puteri-natures-capital-city",178,0.57,12.97,65.17],["/sunways-jeffrey-cheah-building-bridges-between-malaysia-and-singapore",163,0.52,45.39,47.85],["/sunway-spreads-a-little-sunshine",131,0.42,24.82,45.80]]
 };
 
+// Video views by month, organic post views and paid ad views kept apart. Organic is the
+// summed video_views on each post; paid is video_views from the Meta ad summary and
+// videoViews from the TikTok ad summary. No KPI is set against video, so nothing is graded.
+// LinkedIn carries no paid, and Threads appears only from August.
+const VIDEO = {
+ "2026-01":{o:{facebook:161677,instagram:64325,linkedin:10626,tiktok:250118},p:{}},
+ "2026-02":{o:{facebook:2737492,instagram:105880,linkedin:2627,tiktok:2481},p:{}},
+ "2026-03":{o:{facebook:1467892,instagram:161564,linkedin:10293,tiktok:3984},p:{facebook:95640,instagram:19247}},
+ "2026-04":{o:{facebook:1184654,instagram:98678,linkedin:2112,tiktok:1054828},p:{facebook:901602,instagram:1039285,tiktok:372700}},
+ "2026-05":{o:{facebook:354504,instagram:106271,linkedin:0,tiktok:3140},p:{facebook:820491,instagram:675791,tiktok:73034}},
+ "2026-06":{o:{facebook:81696,instagram:59524,linkedin:2602,tiktok:1899},p:{facebook:1539430,instagram:550024,tiktok:1034097}},
+ "2026-07":{o:{facebook:152663,instagram:67163,linkedin:3482,tiktok:2010},p:{facebook:1097883,instagram:593418,tiktok:916564}},
+ "2026-08":{o:{facebook:33765,instagram:24156,linkedin:7427,tiktok:2038},p:{facebook:913772,instagram:416216,threads:26223,tiktok:390493}}
+};
+const VID_TIP = {
+  facebook:"Organic post video views plus views recorded against Facebook ads.",
+  instagram:"Organic post video views plus views recorded against Instagram ads.",
+  linkedin:"LinkedIn video views. Nothing paid runs on LinkedIn, so this is organic only.",
+  tiktok:"Organic post video views plus views recorded against TikTok ads."
+};
+const VID_MONTH_TIP = {
+  "2026-02":"Facebook alone did 2.74m organic video views, the year's high, off the same viral reel that drags the February engagement rate down.",
+  "2026-04":"TikTok organic hit 1.05m views on three posts, its only month above a million. Paid video started this month across all three placements.",
+  "2026-08":"Paid carries 96% of the month's video views. Organic video fell to 67,386 across all four platforms, the lowest of the year."
+};
+// one platform's video views in one period
+function vid(src, k){
+  src = src || {};
+  const o = (src.o || {})[k] || 0, p = (src.p || {})[k] || 0;
+  return {o, p, total: o + p};
+}
+function vidTotal(src){
+  src = src || {};
+  const sum = x => Object.values(x || {}).reduce((a, b) => a + b, 0);
+  return sum(src.o) + sum(src.p);
+}
+function vidOf(which){ const P = PERIODS[period];
+  if (P.month) return VIDEO[which === "cur" ? P.month : PREV_MONTH[P.month]];
+  return which === "cur" ? P.vv : P.prev.vv; }
+
 // ---------- follower growth view ----------
 function renderFG(){
   ["h4a","p4a","wrapExtra"].forEach(id => document.getElementById(id).hidden = true);
@@ -622,6 +667,92 @@ function renderGA(){
   landingGA();
 }
 
+// ---------- video views view ----------
+function renderVV(){
+  ["h4a","p4a","wrapExtra"].forEach(id => document.getElementById(id).hidden = true);
+  document.getElementById("h1a").textContent = PERIODS[period].label + ": " + PERIODS[period].range;
+  document.getElementById("p1a").textContent = "Video views, organic and paid together, each platform on its own. No KPI is set against video, so nothing here is graded.";
+  document.getElementById("h3a").textContent = "Video views month by month";
+
+  const c = vidOf("cur"), pv = vidOf("prev");
+  document.getElementById("cards").innerHTML = MAIN.map(([k, label, colour]) => {
+    const a = vid(c, k), b = vid(pv, k);
+    const share = a.total ? a.p / a.total * 100 : null;
+    return `<div class="stat"><i class="accent" style="background:${colour}"></i>
+      <div class="p">${ICON[k]}${tip(VID_TIP[k], label)}${a.p ? "" : ' <span style="color:var(--pale);font-weight:600">organic</span>'}</div>
+      <div class="v">${n(a.total)}</div>
+      <div class="c">${a.total === 0
+        ? tip("No video was posted on this platform in this period, and nothing paid ran against it.", "no video this period")
+        : tip("Organic post views and paid ad views, added together.", n(a.o) + " organic + " + n(a.p) + " paid") +
+          "&nbsp;·&nbsp; " + tip("Share of this platform's video views that came from paid delivery.", share.toFixed(0) + "% paid") +
+          (b.total ? "&nbsp;·&nbsp; " + deltaPct(a.total, b.total) + " vs " + PERIODS[period].vs : "")}</div></div>`;
+  }).join("");
+
+  let t = `<thead><tr><th>Platform</th>
+    <th>${tip("No video-views KPI is set for Sunway, so these rows carry no target and are not shaded against one.", "KPI")}</th>` +
+    DATA.map(r => `<th>${VID_MONTH_TIP[r.month] ? tip(VID_MONTH_TIP[r.month], mShort(r.month)) : mShort(r.month)}</th>`).join("") + `</tr></thead><tbody>`;
+  MAIN.forEach(([k, label, colour]) => {
+    t += `<tr><td class="plat" style="--c:${colour}"><span class="platname">${ICON[k]}${tip(VID_TIP[k], label)}</span></td>
+      <td class="kpi">&mdash;</td>`;
+    DATA.forEach((r, i) => {
+      const a = vid(VIDEO[r.month], k), b = i ? vid(VIDEO[DATA[i-1].month], k) : null;
+      t += `<td class="er"><span class="cellwrap">${a.total ? n(a.total) : "&mdash;"}
+        ${b && b.total && a.total ? deltaPct(a.total, b.total) : ""}</span></td>`;
+    });
+    t += `</tr>`;
+  });
+  t += `<tr class="sub"><td colspan="${DATA.length + 2}">${tip("Paid placements with no organic side. Listed separately rather than folded into Facebook or Instagram.", "Paid-only placements")}</td></tr>`;
+  PAID_ONLY.forEach(([k, label, desc]) => {
+    if (!DATA.some(r => (VIDEO[r.month].p || {})[k])) return;
+    t += `<tr><td class="plat" style="--c:var(--pale)"><span class="platname">${ICON.paid}${tip(desc, label)}</span></td>
+      <td class="kpi">&mdash;</td>`;
+    DATA.forEach((r, i) => {
+      const a = vid(VIDEO[r.month], k), b = i ? vid(VIDEO[DATA[i-1].month], k) : null;
+      t += `<td class="er"><span class="cellwrap">${a.total ? n(a.total) : "&mdash;"}
+        ${b && b.total && a.total ? deltaPct(a.total, b.total) : ""}</span></td>`;
+    });
+    t += `</tr>`;
+  });
+  t += `<tr><td class="plat" style="--c:var(--ink)"><span class="platname">${tip("Every video view in the month, organic and paid, all placements together.", "All platforms")}</span></td>
+    <td class="kpi">&mdash;</td>` +
+    DATA.map((r, i) => { const v = vidTotal(VIDEO[r.month]), p = i ? vidTotal(VIDEO[DATA[i-1].month]) : null;
+      return `<td class="er"><span class="cellwrap">${n(v)}${p ? deltaPct(v, p) : ""}</span></td>`; }).join("") + `</tr>`;
+  document.getElementById("tblTrend").innerHTML = t + `</tbody>`;
+
+  function detailVV(){
+    const m = DATA[+pick.value].month, src = VIDEO[m], all = vidTotal(src);
+    let h = `<thead><tr><th>Platform</th>
+      <th>${tip("Views on organic posts, summed across the month.", "Organic views")}</th>
+      <th>${tip("Views recorded against paid delivery. Meta from the ad summary, TikTok from the TikTok ad summary.", "Paid views")}</th>
+      <th>Total</th>
+      <th>${tip("Share of this platform's views that came from paid.", "Paid share")}</th>
+      <th>${tip("Share of every video view in the month, across all platforms.", "% of month")}</th></tr></thead><tbody>`;
+    MAIN.forEach(([k, label, colour]) => {
+      const a = vid(src, k);
+      h += `<tr><td class="plat" style="--c:${colour}"><span class="platname">${ICON[k]}${tip(VID_TIP[k], label)}</span></td>
+        <td>${a.o ? n(a.o) : "&mdash;"}</td><td>${a.p ? n(a.p) : "&mdash;"}</td>
+        <td>${n(a.total)}</td>
+        <td>${a.total ? (a.p / a.total * 100).toFixed(2) + "%" : "&mdash;"}</td>
+        <td>${all ? (a.total / all * 100).toFixed(2) + "%" : "&mdash;"}</td></tr>`;
+    });
+    const shown = PAID_ONLY.filter(([k]) => (src.p || {})[k]);
+    if (shown.length){
+      h += `<tr class="sub"><td colspan="6">Paid-only placements</td></tr>`;
+      shown.forEach(([k, label, desc]) => { const a = vid(src, k);
+        h += `<tr><td class="plat" style="--c:var(--pale)"><span class="platname">${ICON.paid}${tip(desc, label)}</span></td>
+          <td>&mdash;</td><td>${n(a.p)}</td><td>${n(a.total)}</td><td>100.00%</td>
+          <td>${all ? (a.total / all * 100).toFixed(2) + "%" : "&mdash;"}</td></tr>`; });
+    }
+    const oAll = Object.values(src.o || {}).reduce((a, b) => a + b, 0);
+    const pAll = Object.values(src.p || {}).reduce((a, b) => a + b, 0);
+    h += `<tr class="sub"><td>All platforms</td><td>${n(oAll)}</td><td>${n(pAll)}</td><td>${n(all)}</td>
+      <td>${all ? (pAll / all * 100).toFixed(2) + "%" : "&mdash;"}</td><td>100.00%</td></tr>`;
+    document.getElementById("tblDetail").innerHTML = h + `</tbody>`;
+  }
+  pick.onchange = detailVV;
+  detailVV();
+}
+
 // ---------- month picker + view switch ----------
 const pick = document.getElementById("monthPick");
 pick.innerHTML = DATA.map((r, i) =>
@@ -633,7 +764,7 @@ function render(){
   document.getElementById("scopeNote").innerHTML =
     "The cards below cover " + PERIODS[period].range + ", against " + PERIODS[period].vs +
     ". The month by month table and the tables under it stay monthly.";
-  view === "er" ? renderER() : view === "fg" ? renderFG() : renderGA();
+  view === "er" ? renderER() : view === "fg" ? renderFG() : view === "vv" ? renderVV() : renderGA();
 }
 document.getElementById("periodTabs").addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
