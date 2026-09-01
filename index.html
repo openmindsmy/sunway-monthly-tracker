@@ -194,9 +194,10 @@ const KPI = {facebook:2, instagram:5, linkedin:25, tiktok:3};
 // Followers gained each month, and the total at month end. "new" is the followers gained
 // in the month, which is the Growth column of the Growth Overview sheet. Growth % is those
 // gains over the previous month total. January to July come from the sheet; August is the
-// full month. TikTok August is withheld because its snapshots swing between 16,032 and 18,991
-// inside the month. Gains do not equal the change in the total, because unfollows are not
-// netted off: Facebook gained 587 in August while the total rose 372.
+// full month. TikTok's August total is the confirmed lifetime count from the platform, since
+// its daily snapshots swing between 16,032 and 18,991 inside the month and cannot be trusted.
+// Gains do not equal the change in the total, because unfollows are not netted off: Facebook
+// gained 587 in August while the total rose 372.
 const FOLLOWERS = {
   "2025-12":{facebook:{count:42467}, instagram:{count:12633}, linkedin:{count:187896}, tiktok:{count:483}},
   "2026-01":{facebook:{count:43150,new:759}, instagram:{count:12957,new:384}, linkedin:{count:189081,new:2138}, tiktok:{count:693,new:210}},
@@ -206,7 +207,7 @@ const FOLLOWERS = {
   "2026-05":{facebook:{count:46065,new:1076}, instagram:{count:15066,new:871}, linkedin:{count:195266,new:2054}, tiktok:{count:10564,new:1100}},
   "2026-06":{facebook:{count:46987,new:1058}, instagram:{count:15599,new:751}, linkedin:{count:197537,new:2320}, tiktok:{count:13069,new:2505}},
   "2026-07":{facebook:{count:47877,new:932}, instagram:{count:16592,new:964}, linkedin:{count:200949,new:2803}, tiktok:{count:15923,new:2854}},
-  "2026-08":{facebook:{count:48249,new:587}, instagram:{count:16975,new:701}, linkedin:{count:202813,new:2821}, tiktok:{count:null,new:3345,split:{organic:62,paid:3283}}}
+  "2026-08":{facebook:{count:48249,new:587}, instagram:{count:16975,new:701}, linkedin:{count:202813,new:2821}, tiktok:{count:18998,new:3345,split:{organic:62,paid:3283}}}
 };
 const PREV_MONTH = {"2026-01":"2025-12","2026-02":"2026-01","2026-03":"2026-02","2026-04":"2026-03",
   "2026-05":"2026-04","2026-06":"2026-05","2026-07":"2026-06","2026-08":"2026-07"};
@@ -228,7 +229,7 @@ const KPI_FG = {
 const TT_TOTAL_TIP = "TikTok gained 3,345 followers in August, 62 organically and 3,283 through follower ads.";
 const FG_MONTH_TIP = {
   "2026-04":"TikTok gained 8,347 followers this month on a base of 993, from paid follower acquisition rather than organic pull.",
-  "2026-08":"Full month, 1 to 31 August. TikTok gained 3,345, of which 3,283 came from follower ads. Its month-end total is withheld because the snapshots swing between 16,032 and 18,991 inside the month."
+  "2026-08":"Full month, 1 to 31 August. TikTok gained 3,345, of which 3,283 came from follower ads, closing at a confirmed 18,998 lifetime followers."
 };
 const MONTH_TIP = {
   "2026-01":"No paid ran in January, so every rate here is organic only.",
