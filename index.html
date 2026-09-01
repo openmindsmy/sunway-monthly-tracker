@@ -167,7 +167,7 @@ const DATA = [
  {month:"2026-05",organic:{facebook:{posts:15,reach:423180,eng:3968},instagram:{posts:16,reach:50898,eng:2157},linkedin:{posts:13,reach:53448,eng:40374},tiktok:{posts:4,reach:2764,eng:91}},paid:{audience_network:{spend:116,impressions:13788,eng:744},facebook:{spend:16131,impressions:3543316,eng:204691},instagram:{spend:6090,impressions:1242149,eng:71952},messenger:{spend:0,impressions:2,eng:0},threads:{spend:3,impressions:4184,eng:22},tiktok:{spend:997,impressions:75872,eng:2969}}},
  {month:"2026-06",organic:{facebook:{posts:11,reach:209748,eng:4667},instagram:{posts:11,reach:32092,eng:1295},linkedin:{posts:11,reach:70329,eng:35144},tiktok:{posts:4,reach:1678,eng:65}},paid:{audience_network:{spend:761,impressions:143345,eng:5135},facebook:{spend:12211,impressions:2535911,eng:294606},instagram:{spend:5258,impressions:1077934,eng:59388},threads:{spend:15,impressions:22611,eng:86},tiktok:{spend:4742,impressions:1046837,eng:9660}}},
  {month:"2026-07",organic:{facebook:{posts:12,reach:209289,eng:3449},instagram:{posts:11,reach:35929,eng:2007},linkedin:{posts:12,reach:77865,eng:33149},tiktok:{posts:4,reach:1773,eng:74}},paid:{audience_network:{spend:916,impressions:123148,eng:5267},facebook:{spend:9168,impressions:1844608,eng:194333},instagram:{spend:4752,impressions:994764,eng:59724},threads:{spend:26,impressions:29931,eng:143},tiktok:{spend:3982,impressions:927625,eng:10187}}},
- {month:"2026-08",partial:true,organic:{facebook:{posts:5,reach:49732,eng:559},instagram:{posts:6,reach:11498,eng:743},linkedin:{posts:6,reach:20775,eng:3446},tiktok:{posts:2,reach:1506,eng:43}},paid:{audience_network:{spend:1014,impressions:107774,eng:5971},facebook:{spend:4766,impressions:1119147,eng:129858},instagram:{spend:3022,impressions:577451,eng:55933},threads:{spend:94,impressions:63338,eng:8941},tiktok:{spend:2973,impressions:384126,eng:8213}}}
+ {month:"2026-08",organic:{facebook:{posts:6,reach:51390,eng:577},instagram:{posts:7,reach:12149,eng:784},linkedin:{posts:7,reach:22656,eng:3770},tiktok:{posts:3,reach:1532,eng:45}},paid:{audience_network:{spend:1097,impressions:130396,eng:6614},facebook:{spend:5707,impressions:1310077,eng:160349},instagram:{spend:3560,impressions:676539,eng:61549},threads:{spend:129,impressions:85271,eng:11097},tiktok:{spend:3212,impressions:395556,eng:8853}}}
 ];
 
 const ICON = {
@@ -193,10 +193,10 @@ const KPI = {facebook:2, instagram:5, linkedin:25, tiktok:3};
 
 // Followers gained each month, and the total at month end. "new" is the followers gained
 // in the month, which is the Growth column of the Growth Overview sheet. Growth % is those
-// gains over the previous month total. January to July come from the sheet; August is to
-// the 27th. TikTok August is withheld because its snapshots swing between 16,032 and 18,734
+// gains over the previous month total. January to July come from the sheet; August is the
+// full month. TikTok August is withheld because its snapshots swing between 16,032 and 18,991
 // inside the month. Gains do not equal the change in the total, because unfollows are not
-// netted off: Facebook gained 461 in August while the total rose 262.
+// netted off: Facebook gained 580 in August while the total rose 372.
 const FOLLOWERS = {
   "2025-12":{facebook:{count:42467}, instagram:{count:12633}, linkedin:{count:187896}, tiktok:{count:483}},
   "2026-01":{facebook:{count:43150,new:759}, instagram:{count:12957,new:384}, linkedin:{count:189081,new:2138}, tiktok:{count:693,new:210}},
@@ -206,7 +206,7 @@ const FOLLOWERS = {
   "2026-05":{facebook:{count:46065,new:1076}, instagram:{count:15066,new:871}, linkedin:{count:195266,new:2054}, tiktok:{count:10564,new:1100}},
   "2026-06":{facebook:{count:46987,new:1058}, instagram:{count:15599,new:751}, linkedin:{count:197537,new:2320}, tiktok:{count:13069,new:2505}},
   "2026-07":{facebook:{count:47877,new:932}, instagram:{count:16592,new:964}, linkedin:{count:200949,new:2803}, tiktok:{count:15923,new:2854}},
-  "2026-08":{facebook:{count:48139,new:461}, instagram:{count:16910,new:614}, linkedin:{count:202710,new:2585}, tiktok:{count:null,new:3054,split:{organic:62,paid:2992}}}
+  "2026-08":{facebook:{count:48249,new:580}, instagram:{count:16975,new:701}, linkedin:{count:202813,new:2752}, tiktok:{count:null,new:3345,split:{organic:62,paid:3283}}}
 };
 const PREV_MONTH = {"2026-01":"2025-12","2026-02":"2026-01","2026-03":"2026-02","2026-04":"2026-03",
   "2026-05":"2026-04","2026-06":"2026-05","2026-07":"2026-06","2026-08":"2026-07"};
@@ -225,17 +225,17 @@ const KPI_FG = {
   linkedin:{min:1794, label:"1,794", tip:"1,794 new followers a month, the count behind the 1% target."},
   tiktok:{min:1600, label:"1,600", tip:"1,600 new followers a month. The original KPI was 10,000 followers by June 2026, passed in June at 13,069."}
 };
-const TT_TOTAL_TIP = "TikTok gained 3,054 followers in August, 62 organically and 2,992 through follower ads.";
+const TT_TOTAL_TIP = "TikTok gained 3,345 followers in August, 62 organically and 3,283 through follower ads.";
 const FG_MONTH_TIP = {
   "2026-04":"TikTok gained 8,347 followers this month on a base of 993, from paid follower acquisition rather than organic pull.",
-  "2026-08":"To 27 August, so the month is unfinished and the gains are short of a full month. TikTok gained 3,054, of which 2,992 came from follower ads."
+  "2026-08":"Full month, 1 to 31 August. TikTok gained 3,345, of which 3,283 came from follower ads. Its month-end total is withheld because the snapshots swing between 16,032 and 18,991 inside the month."
 };
 const MONTH_TIP = {
   "2026-01":"No paid ran in January, so every rate here is organic only.",
   "2026-02":"One Facebook reel reached 1,275,544 against a median post of 10,684. That single post is most of the month's reach, which inflates the denominator and pushes the Facebook rate down.",
   "2026-03":"One Facebook reel reached 607,837 against a median post of 10,469. Same effect as February: one viral post drags the rate down.",
   "2026-04":"One Facebook reel reached 553,270, and the median post sat at 34,655 on the month's heaviest spend. High reach across the board holds the rate down.",
-  "2026-08":"1 to 27 August only. Rates are comparable, totals are not."
+  "2026-08":"Full month, 1 to 31 August. Facebook and Instagram both cleared their rate targets on the year's lightest organic output: 6 Facebook posts and 7 on Instagram."
 };
 
 const n = v => (v || 0).toLocaleString("en-GB");
@@ -270,26 +270,26 @@ function deltaHTML(now, before){
 // the rolling windows are their own pulls, each with the matching previous window so the
 // comparison is like for like. Values are [reach or impressions, engagements, posts or spend].
 const PERIODS = {
-  mtd:     {label:"Month to date", range:"1 to 27 Aug 2026",  vs:"July",            month:"2026-08"},
+  mtd:     {label:"Month to date", range:"1 to 31 Aug 2026",  vs:"July",            month:"2026-08"},
   lastmon: {label:"Last month",    range:"1 to 31 Jul 2026",  vs:"June",            month:"2026-07"},
-  last30:  {label:"Last 30 days",  range:"29 Jul to 27 Aug",  vs:"the 30 days before",
-    o:{facebook:[143191,1478,9],instagram:[27363,1738,11],linkedin:[45067,20234,10],tiktok:[2582,80,4]},
-    p:{facebook:[1682000,182988,7292],instagram:[843640,68568,4468],threads:[71230,8976,103],audience_network:[203234,10088,1773],tiktok:[539575,10555,3874]},
-    fol:{facebook:642,instagram:730,linkedin:2879,tiktok:3733},
-    ga:{visits:39426,users:36684,engRate:19.02,avgSec:42.7},
-    prev:{o:{facebook:[132936,2782,10],instagram:[24383,1139,8],linkedin:[68196,17003,10],tiktok:[929,42,3]},
-      p:{facebook:[1330358,145243,6897],instagram:[757654,48981,3432],threads:[22143,110,17],audience_network:[27705,1150,156],tiktok:[1059230,10826,4482]},
-      fol:{facebook:824,instagram:896,linkedin:2549,tiktok:3012},
-      ga:{visits:27804,users:25187,engRate:17.26,avgSec:38.2}}},
-  last7:   {label:"Last 7 days",   range:"21 to 27 Aug 2026", vs:"the 7 days before",
-    o:{facebook:[3806,39,1],instagram:[1100,47,1],linkedin:[802,200,1]},
-    p:{facebook:[318841,33139,1462],instagram:[169029,13237,929],threads:[58740,8924,89],audience_network:[43148,1052,145],tiktok:[30410,1617,580]},
-    fol:{facebook:109,instagram:129,linkedin:353,tiktok:630},
-    ga:{visits:8529,users:8335,engRate:12.78,avgSec:29.6},
-    prev:{o:{facebook:[28051,315,2],instagram:[3906,284,2],linkedin:[9256,877,2],tiktok:[242,0,1]},
-      p:{facebook:[312117,41004,1378],instagram:[177626,14976,922],threads:[140,0,0],audience_network:[3573,150,29],tiktok:[41807,2070,700]},
-      fol:{facebook:132,instagram:141,linkedin:520,tiktok:829},
-      ga:{visits:5201,users:4913,engRate:18.92,avgSec:37.9}}}
+  last30:  {label:"Last 30 days",  range:"2 to 31 Aug 2026",  vs:"the 30 days before",
+    o:{facebook:[51390,577,6],instagram:[12149,784,7],linkedin:[22656,3770,7],tiktok:[1532,45,3]},
+    p:{facebook:[1192928,147721,5284],instagram:[644680,58764,3394],threads:[82134,11086,125],audience_network:[92116,4974,821],tiktok:[364497,8486,3062]},
+    fol:{facebook:548,instagram:661,linkedin:2668,tiktok:3167},
+    ga:{visits:28636,users:27013,engRate:20.27,avgSec:40.5},
+    prev:{o:{facebook:[219149,3769,12],instagram:[36097,2007,11],linkedin:[77985,33317,12],tiktok:[1796,74,4]},
+      p:{facebook:[1901809,199104,9233],instagram:[994043,59014,4734],threads:[31760,147,28],audience_network:[158602,6765,1170],tiktok:[908289,9974,3911]},
+      fol:{facebook:948,instagram:941,linkedin:2657,tiktok:2952},
+      ga:{visits:41507,users:37785,engRate:18.00,avgSec:37.7}}},
+  last7:   {label:"Last 7 days",   range:"25 to 31 Aug 2026", vs:"the 7 days before",
+    o:{facebook:[500,15,1],instagram:[361,24,1],linkedin:[795,59,1],tiktok:[0,2,1]},
+    p:{facebook:[337312,38659,1586],instagram:[158287,10376,873],threads:[67543,5634,113],audience_network:[37387,1090,148],tiktok:[19578,1133,420]},
+    fol:{facebook:138,instagram:124,linkedin:236,tiktok:485},
+    ga:{visits:11050,users:10547,engRate:18.33,avgSec:21.1},
+    prev:{o:{facebook:[10873,152,2],instagram:[4000,277,2],linkedin:[7664,1067,2],tiktok:[261,0,1]},
+      p:{facebook:[306082,43077,1433],instagram:[183973,14026,1014],threads:[13243,5446,11],audience_network:[29585,637,87],tiktok:[42419,2048,700]},
+      fol:{facebook:148,instagram:142,linkedin:531,tiktok:805},
+      ga:{visits:6576,users:6350,engRate:16.21,avgSec:34.4}}}
 };
 let period = "mtd";
 // the two objects the views read: current and comparison, whichever preset is selected
@@ -409,8 +409,8 @@ document.getElementById("foot").innerHTML =
   tip("The July report deck reported RM14,861 of paid spend, which is Meta only. Adding TikTok brings it to RM" + n(julSpend) + ".",
       "Paid covers Meta and TikTok, so July totals RM" + n(julSpend) + ".");
 
-// GA4, from the dashboard's Google Analytics surface. "visits" is sessions. August is to
-// the 27th. Channels are GA4's default channel grouping; AI Assistant is a custom grouping.
+// GA4, from the dashboard's Google Analytics surface. "visits" is sessions. August is the
+// full month. Channels are GA4's default channel grouping; AI Assistant is a custom grouping.
 const GA = {
   "2026-01":{visits:19186,users:17649,engRate:26.69,avgSec:66.5,bounce:73.31,channels:{"Direct":5797,"Organic Search":5267,"Unassigned":4907,"Paid Social":2344,"Referral":364,"Email":159,"Organic Social":144,"Paid Other":37,"Display":1}},
   "2026-02":{visits:10991,users:10152,engRate:24.32,avgSec:61.0,bounce:75.68,channels:{"Direct":5052,"Organic Search":2693,"Unassigned":2446,"Paid Social":401,"Referral":253,"Organic Social":88,"Email":12,"Display":2}},
@@ -419,7 +419,7 @@ const GA = {
   "2026-05":{visits:47887,users:42985,engRate:11.79,avgSec:23.6,bounce:88.21,channels:{"Paid Social":26804,"Direct":10738,"Unassigned":4131,"Organic Search":3376,"Referral":756,"Paid Other":630,"Organic Social":161,"Email":3,"Display":2}},
   "2026-06":{visits:41637,users:37339,engRate:14.56,avgSec:34.2,bounce:85.44,channels:{"Paid Social":21782,"Direct":7952,"Paid Other":3981,"Unassigned":3369,"Organic Search":2938,"Referral":250,"Organic Social":180,"AI Assistant":158,"Display":1,"Email":1}},
   "2026-07":{visits:40621,users:37129,engRate:17.62,avgSec:36.1,bounce:82.38,channels:{"Paid Social":21289,"Direct":7153,"Unassigned":4080,"Paid Other":4031,"Organic Search":3142,"AI Assistant":246,"Referral":194,"Organic Social":88,"Email":34,"Display":2}},
-  "2026-08":{visits:24874,users:23382,engRate:19.86,avgSec:48.8,bounce:80.14,channels:{"Paid Social":7395,"Direct":6079,"Paid Other":5445,"Unassigned":3729,"Organic Search":2630,"AI Assistant":213,"Referral":119,"Organic Social":117,"Cross-network":34,"Display":17}}
+  "2026-08":{visits:31306,users:29303,engRate:20.81,avgSec:42.5,bounce:79.19,channels:{"Paid Social":11334,"Direct":6996,"Paid Other":6127,"Unassigned":3959,"Organic Search":2873,"AI Assistant":235,"Organic Social":156,"Referral":137,"Display":21,"Cross-network":3}}
 };
 const GA_USERS = {
  "2026-01":{"Direct":5668,"Organic Search":4317,"Unassigned":4889,"Paid Social":2328,"Referral":217,"Email":83,"Organic Social":133,"Paid Other":37,"Display":1},
@@ -429,7 +429,7 @@ const GA_USERS = {
  "2026-05":{"Paid Social":24258,"Direct":10765,"Unassigned":4051,"Organic Search":2634,"Referral":578,"Paid Other":509,"Organic Social":149,"Email":3,"Display":2},
  "2026-06":{"Paid Social":20452,"Direct":7718,"Paid Other":3278,"Unassigned":3358,"Organic Search":2177,"Referral":131,"Organic Social":175,"AI Assistant":92,"Display":1,"Email":1},
  "2026-07":{"Paid Social":19759,"Direct":6910,"Unassigned":3973,"Paid Other":3636,"Organic Search":2364,"AI Assistant":151,"Referral":119,"Organic Social":87,"Email":17,"Display":2},
- "2026-08":{"Paid Social":7182,"Direct":5806,"Paid Other":4602,"Unassigned":3774,"Organic Search":2105,"AI Assistant":157,"Referral":89,"Organic Social":114,"Cross-network":34,"Display":17}
+ "2026-08":{"Paid Social":10734,"Direct":6598,"Paid Other":5270,"Unassigned":4019,"Organic Search":2326,"AI Assistant":172,"Organic Social":153,"Referral":102,"Display":21,"Cross-network":3}
 };
 const GA_KPI = 30000;  // 30,000 visits a month
 const GA_ROWS = [
@@ -441,7 +441,7 @@ const GA_ROWS = [
   ["Unassigned","var(--pale)","GA4 could not place these in any channel."]
 ];
 const GA_MONTH_TIP = {
-  "2026-08":"1 to 27 August, so sessions are short of a full month. At this pace August lands near 28,600, still under the 30,000 target.",
+  "2026-08":"Full month. August cleared the 30,000 target at 31,306 sessions, on roughly half July's paid social volume: 11,334 paid social sessions against 21,289 in July.",
   "2026-02":"The quietest month of the year, with almost no paid behind the site: 401 paid social sessions against 13,394 in March."
 };
 
@@ -456,7 +456,7 @@ const LP = {
  "2026-05":[["/building-resilient-communities-beyond-corporate-responsibility",25429,53.10,0.99,93.79],["/fulfilling-the-golden-years",1306,2.73,55.16,43.87],["/",1053,2.20,10.71,82.81],["/what-if-cities-could-heal-rather-than-harm",1052,2.20,0.72,93.06],["/sunways-jeffrey-cheah-building-bridges-between-malaysia-and-singapore",903,1.89,8.16,84.61],["/a-lifelong-learner-in-sustainability",466,0.97,4.85,86.91],["/from-junior-executive-to-group-leader-guided-by-her-father-and-a-belief-in-family-harmony",428,0.89,87.98,54.91],["/our-brand-evolution-since-1974",124,0.26,26.56,56.45],["/sustainability",116,0.24,2.86,88.79]],
  "2026-06":[["/building-resilient-communities-beyond-corporate-responsibility",16920,40.64,3.26,88.08],["/fulfilling-the-golden-years",3840,9.22,10.03,81.85],["/from-console-to-cause",2326,5.59,0.60,92.48],["/a-sanctuary-for-the-golden-years",1453,3.49,1.95,94.63],["/a-lifelong-learner-in-sustainability",1439,3.46,2.21,92.29],["/",710,1.71,15.33,72.11],["/from-junior-executive-to-group-leader-guided-by-her-father-and-a-belief-in-family-harmony",377,0.91,91.05,47.48],["/have-you-met-the-sunbassadors",324,0.78,1.06,86.42],["/what-if-cities-could-heal-rather-than-harm",198,0.48,2.84,90.91]],
  "2026-07":[["/building-resilient-communities-beyond-corporate-responsibility",18822,46.34,3.85,84.92],["/fulfilling-the-golden-years",4547,11.19,5.24,85.75],["/a-sanctuary-for-the-golden-years",2254,5.55,2.80,85.45],["/",746,1.84,22.04,68.50],["/from-junior-executive-to-group-leader-guided-by-her-father-and-a-belief-in-family-harmony",355,0.87,75.82,43.66],["/sunways-jeffrey-cheah-building-bridges-between-malaysia-and-singapore",225,0.55,34.61,49.78],["/sunway-spreads-a-little-sunshine",144,0.35,36.15,40.28],["/our-brand-evolution-since-1974",121,0.30,15.31,62.81],["/the-tech-powered-future",112,0.28,33.19,53.57]],
- "2026-08":[["/building-resilient-communities-beyond-corporate-responsibility",9477,38.10,6.05,75.59],["/fulfilling-the-golden-years",3279,13.18,4.62,85.36],["/",679,2.73,13.29,69.51],["/from-junior-executive-to-group-leader-guided-by-her-father-and-a-belief-in-family-harmony",400,1.61,75.49,47.50],["/a-sanctuary-for-the-golden-years",174,0.70,13.68,48.28],["/sunway-city-iskandar-puteri-natures-capital-city",159,0.64,13.25,66.04],["/sunways-jeffrey-cheah-building-bridges-between-malaysia-and-singapore",150,0.60,39.41,48.00],["/sunway-spreads-a-little-sunshine",121,0.49,26.22,44.63]]
+ "2026-08":[["/building-resilient-communities-beyond-corporate-responsibility",13834,44.19,4.58,78.67],["/fulfilling-the-golden-years",3410,10.89,4.68,85.28],["/",769,2.46,11.73,69.83],["/from-junior-executive-to-group-leader-guided-by-her-father-and-a-belief-in-family-harmony",456,1.46,78.74,47.15],["/a-sanctuary-for-the-golden-years",285,0.91,11.70,57.54],["/sunway-city-iskandar-puteri-natures-capital-city",178,0.57,12.97,65.17],["/sunways-jeffrey-cheah-building-bridges-between-malaysia-and-singapore",163,0.52,45.39,47.85],["/sunway-spreads-a-little-sunshine",131,0.42,24.82,45.80]]
 };
 
 // ---------- follower growth view ----------
