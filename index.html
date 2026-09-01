@@ -193,10 +193,10 @@ const KPI = {facebook:2, instagram:5, linkedin:25, tiktok:3};
 
 // Followers gained each month, and the total at month end. "new" is the followers gained
 // in the month, which is the Growth column of the Growth Overview sheet. Growth % is those
-// gains over the previous month total. January to July come from the sheet; August is the
-// full month. TikTok August is withheld because its snapshots swing between 16,032 and 18,991
-// inside the month. Gains do not equal the change in the total, because unfollows are not
-// netted off: Facebook gained 580 in August while the total rose 372.
+// gains over the previous month total. January to August come from the sheet; the August
+// totals are month-end snapshots. TikTok August is withheld because its snapshots swing
+// between 16,032 and 18,991 inside the month. Gains do not equal the change in the total,
+// because unfollows are not netted off: Facebook gained 932 in August while the total rose 372.
 const FOLLOWERS = {
   "2025-12":{facebook:{count:42467}, instagram:{count:12633}, linkedin:{count:187896}, tiktok:{count:483}},
   "2026-01":{facebook:{count:43150,new:759}, instagram:{count:12957,new:384}, linkedin:{count:189081,new:2138}, tiktok:{count:693,new:210}},
@@ -206,7 +206,7 @@ const FOLLOWERS = {
   "2026-05":{facebook:{count:46065,new:1076}, instagram:{count:15066,new:871}, linkedin:{count:195266,new:2054}, tiktok:{count:10564,new:1100}},
   "2026-06":{facebook:{count:46987,new:1058}, instagram:{count:15599,new:751}, linkedin:{count:197537,new:2320}, tiktok:{count:13069,new:2505}},
   "2026-07":{facebook:{count:47877,new:932}, instagram:{count:16592,new:964}, linkedin:{count:200949,new:2803}, tiktok:{count:15923,new:2854}},
-  "2026-08":{facebook:{count:48249,new:580}, instagram:{count:16975,new:701}, linkedin:{count:202813,new:2752}, tiktok:{count:null,new:3345,split:{organic:62,paid:3283}}}
+  "2026-08":{facebook:{count:48249,new:932}, instagram:{count:16975,new:964}, linkedin:{count:202813,new:2821}, tiktok:{count:null,new:3345,split:{organic:62,paid:3283}}}
 };
 const PREV_MONTH = {"2026-01":"2025-12","2026-02":"2026-01","2026-03":"2026-02","2026-04":"2026-03",
   "2026-05":"2026-04","2026-06":"2026-05","2026-07":"2026-06","2026-08":"2026-07"};
