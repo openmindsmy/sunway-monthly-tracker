@@ -170,7 +170,7 @@ const DATA = [
  {month:"2026-07",organic:{facebook:{posts:12,reach:209289,eng:3449},instagram:{posts:11,reach:35929,eng:2007},linkedin:{posts:12,reach:77865,eng:33149},tiktok:{posts:4,reach:1773,eng:74}},paid:{audience_network:{spend:916,impressions:123148,eng:5267},facebook:{spend:9168,impressions:1844608,eng:194333},instagram:{spend:4752,impressions:994764,eng:59724},threads:{spend:26,impressions:29931,eng:143},tiktok:{spend:3982,impressions:927625,eng:10187}}},
  {month:"2026-08",organic:{facebook:{posts:6,reach:51390,eng:577},instagram:{posts:7,reach:12149,eng:784},linkedin:{posts:7,reach:22656,eng:3770},tiktok:{posts:3,reach:1532,eng:45}},paid:{audience_network:{spend:1097,impressions:130396,eng:6614},facebook:{spend:5707,impressions:1310077,eng:160349},instagram:{spend:3560,impressions:676539,eng:61549},threads:{spend:129,impressions:85271,eng:11097},tiktok:{spend:3212,impressions:395556,eng:8853}}},
  {month:"2026-09",organic:{facebook:{posts:14,reach:865033,eng:4054},instagram:{posts:14,reach:47331,eng:2796},linkedin:{posts:14,reach:87597,eng:82015},tiktok:{posts:5,reach:2406,eng:98}},paid:{audience_network:{spend:1036,impressions:134394,eng:5933},facebook:{spend:7067,impressions:1443364,eng:235232},instagram:{spend:3693,impressions:643334,eng:58847},threads:{spend:276,impressions:229979,eng:71881},tiktok:{spend:1571,impressions:70830,eng:4657}}},
- {month:"2026-10",organic:{facebook:{posts:4,reach:73200,eng:997},instagram:{posts:4,reach:13127,eng:843},linkedin:{posts:4,reach:28768,eng:26959},tiktok:{posts:2,reach:439,eng:79}},paid:{audience_network:{spend:87,impressions:14994,eng:615},facebook:{spend:1271,impressions:281001,eng:46598},instagram:{spend:780,impressions:144003,eng:12023},threads:{spend:42,impressions:62038,eng:22951},tiktok:{spend:300,impressions:10539,eng:656}}}
+ {month:"2026-10",organic:{facebook:{posts:4,reach:154843,eng:1662},instagram:{posts:4,reach:24978,eng:1275},linkedin:{posts:4,reach:61373,eng:32560},tiktok:{posts:2,reach:445,eng:121}},paid:{audience_network:{spend:102,impressions:19266,eng:716},facebook:{spend:1623,impressions:366062,eng:51578},instagram:{spend:875,impressions:160736,eng:13700},threads:{spend:48,impressions:71002,eng:26359},tiktok:{spend:350,impressions:11605,eng:724}}}
 ];
 
 const ICON = {
@@ -212,7 +212,7 @@ const FOLLOWERS = {
   "2026-07":{facebook:{count:47877,new:932}, instagram:{count:16592,new:964}, linkedin:{count:200949,new:2803}, tiktok:{count:15923,new:2854}},
   "2026-08":{facebook:{count:48249,new:587}, instagram:{count:16975,new:701}, linkedin:{count:202813,new:2821}, tiktok:{count:18998,new:3345,split:{organic:62,paid:3283}}},
   "2026-09":{facebook:{count:49058,new:949}, instagram:{count:17773,new:1013}, linkedin:{count:204641,new:1709}, tiktok:{count:20676,new:1707}},
-  "2026-10":{facebook:{count:49212,new:167}, instagram:{count:17944,new:103}, linkedin:{count:205213,new:515}, tiktok:{count:20945,new:231}}
+  "2026-10":{facebook:{count:49271,new:235}, instagram:{count:18002,new:174}, linkedin:{count:205460,new:762}, tiktok:{count:21010,new:296}}
 };
 const PREV_MONTH = {"2026-01":"2025-12","2026-02":"2026-01","2026-03":"2026-02","2026-04":"2026-03",
   "2026-05":"2026-04","2026-06":"2026-05","2026-07":"2026-06","2026-08":"2026-07","2026-09":"2026-08","2026-10":"2026-09"};
@@ -278,30 +278,30 @@ function deltaHTML(now, before){
 // the rolling windows are their own pulls, each with the matching previous window so the
 // comparison is like for like. Values are [reach or impressions, engagements, posts or spend].
 const PERIODS = {
-  mtd:     {label:"Month to date", range:"1 to 6 Oct 2026",   vs:"September",       month:"2026-10"},
+  mtd:     {label:"Month to date", range:"1 to 7 Oct 2026",   vs:"September",       month:"2026-10"},
   lastmon: {label:"Last month",    range:"1 to 30 Sep 2026",  vs:"August",          month:"2026-09"},
-  last30:  {label:"Last 30 days",  range:"7 Sep to 6 Oct 2026", vs:"the 30 days before",
-    o:{facebook:[892832,4445,16],instagram:[57607,3496,17],linkedin:[104509,93742,16],tiktok:[2845,177,7]},
-    p:{audience_network:[125080,4314,738],facebook:[1463283,241373,7103],instagram:[652734,59072,3778],threads:[254164,82726,273],tiktok:[62957,4189,1511]},
-    fol:{facebook:946,instagram:939,linkedin:1905,tiktok:1452},
-    ga:{visits:30008,users:28016,engRate:19.24,avgSec:32.4},
-    vv:{o:{facebook:1087947,instagram:125451,linkedin:791,tiktok:8556},p:{facebook:1183034,instagram:282312,threads:206367,tiktok:61841}},
-    prev:{o:{facebook:[82203,1029,6],instagram:[9152,525,5],linkedin:[30647,18278,7],tiktok:[716,2,2]},
-      p:{audience_network:[104664,5557,933],facebook:[1249190,167099,5755],instagram:[663836,56078,3511],threads:[118690,23186,169],tiktok:[197066,7310,2521]},
-      fol:{facebook:618,instagram:674,linkedin:2047,tiktok:2659},
-      ga:{visits:31595,users:29504,engRate:20.13,avgSec:36.4},
-      vv:{o:{facebook:12417,instagram:19269,linkedin:6521,tiktok:800},p:{facebook:890459,instagram:355541,threads:57946,tiktok:194314}}}},
-  last7:   {label:"Last 7 days",   range:"30 Sep to 6 Oct 2026", vs:"the 7 days before",
-    o:{facebook:[679761,2287,5],instagram:[14161,898,5],linkedin:[29715,27014,5],tiktok:[753,90,3]},
-    p:{audience_network:[19871,719,104],facebook:[341956,57117,1541],instagram:[175414,14822,963],threads:[65580,24309,47],tiktok:[12633,758,350]},
-    fol:{facebook:202,instagram:146,linkedin:572,tiktok:269},
-    ga:{visits:6966,users:6474,engRate:18.49,avgSec:21.8},
-    vv:{o:{facebook:1086368,instagram:31487,linkedin:399,tiktok:6189},p:{facebook:299741,instagram:47103,threads:58620,tiktok:12330}},
-    prev:{o:{facebook:[16982,353,2],instagram:[9153,576,3],linkedin:[9242,5920,2],tiktok:[901,30,2]},
-      p:{audience_network:[35107,870,120],facebook:[357218,63043,1712],instagram:[151846,15965,848],threads:[44541,10783,76],tiktok:[11790,865,349]},
-      fol:{facebook:158,instagram:185,linkedin:283,tiktok:251},
-      ga:{visits:6888,users:6670,engRate:18.64,avgSec:34.7},
-      vv:{o:{facebook:0,instagram:19100,linkedin:0,tiktok:983},p:{facebook:292252,instagram:70939,threads:25329,tiktok:11570}}}}
+  last30:  {label:"Last 30 days",  range:"8 Sep to 7 Oct 2026", vs:"the 30 days before",
+    o:{facebook:[1131168,5558,16],instagram:[62072,3577,16],linkedin:[137408,99527,16],tiktok:[2857,219,7]},
+    p:{audience_network:[126873,3993,660],facebook:[1501593,239276,7228],instagram:[652039,59028,3775],threads:[259243,84771,275],tiktok:[61228,4089,1501]},
+    fol:{facebook:969,instagram:972,linkedin:2072,tiktok:1643},
+    ga:{visits:31192,users:28654,engRate:19.69,avgSec:31.6},
+    vv:{o:{facebook:1461906,instagram:134390,linkedin:825,tiktok:12074},p:{facebook:1163823,instagram:275953,threads:211347,tiktok:60135}},
+    prev:{o:{facebook:[82540,1033,6],instagram:[17273,896,6],linkedin:[25853,16794,6],tiktok:[718,2,2]},
+      p:{audience_network:[105217,5711,975],facebook:[1276102,171568,5872],instagram:[669472,56349,3536],threads:[122571,24549,173],tiktok:[177127,7255,2481]},
+      fol:{facebook:655,instagram:686,linkedin:1997,tiktok:2940},
+      ga:{visits:32031,users:29879,engRate:20.19,avgSec:36.9},
+      vv:{o:{facebook:12532,instagram:35807,linkedin:6531,tiktok:811},p:{facebook:911822,instagram:355765,threads:61454,tiktok:174619}}}},
+  last7:   {label:"Last 7 days",   range:"1 to 7 Oct 2026", vs:"the 7 days before",
+    o:{facebook:[154843,1662,4],instagram:[24978,1275,4],linkedin:[61373,32560,4],tiktok:[445,121,2]},
+    p:{audience_network:[19266,716,102],facebook:[366062,51578,1623],instagram:[160736,13700,875],threads:[71002,26359,48],tiktok:[11605,724,350]},
+    fol:{facebook:235,instagram:174,linkedin:762,tiktok:298},
+    ga:{visits:7293,users:6649,engRate:15.41,avgSec:27.2},
+    vv:{o:{facebook:0,instagram:53990,linkedin:0,tiktok:9316},p:{facebook:269299,instagram:45457,threads:64105,tiktok:11314}},
+    prev:{o:{facebook:[779354,2094,3],instagram:[7229,499,3],linkedin:[10280,6002,3],tiktok:[1219,41,3]},
+      p:{audience_network:[30373,846,120],facebook:[371175,65207,1775],instagram:[159273,16836,886],threads:[43351,11047,71],tiktok:[11910,848,350]},
+      fol:{facebook:168,instagram:199,linkedin:265,tiktok:332},
+      ga:{visits:7257,users:6935,engRate:25.69,avgSec:32.1},
+      vv:{o:{facebook:1460216,instagram:14000,linkedin:423,tiktok:1354},p:{facebook:304043,instagram:69396,threads:25795,tiktok:11683}}}}
 };
 let period = "mtd";
 // the two objects the views read: current and comparison, whichever preset is selected
@@ -433,7 +433,7 @@ const GA = {
   "2026-07":{visits:40621,users:37129,engRate:17.62,avgSec:36.1,bounce:82.38,channels:{"Paid Social":21289,"Direct":7153,"Unassigned":4080,"Paid Other":4031,"Organic Search":3142,"AI Assistant":246,"Referral":194,"Organic Social":88,"Email":34,"Display":2}},
   "2026-08":{visits:31306,users:29303,engRate:20.81,avgSec:42.5,bounce:79.19,channels:{"Paid Social":11334,"Direct":6996,"Paid Other":6127,"Unassigned":3959,"Organic Search":2873,"AI Assistant":235,"Organic Social":156,"Referral":137,"Display":21,"Cross-network":3}},
   "2026-09":{visits:31524,users:29634,engRate:20.58,avgSec:35.9,bounce:79.42,channels:{"Paid Social":13950,"Paid Other":5783,"Direct":5285,"Unassigned":4017,"Organic Search":2361,"Organic Social":293,"Referral":192,"AI Assistant":171,"Email":52,"Display":4}},
-  "2026-10":{visits:5123,users:4708,engRate:10.54,avgSec:22.8,bounce:89.46,channels:{"Paid Social":2506,"Direct":750,"Unassigned":648,"Paid Other":458,"Organic Search":393,"Referral":72,"Organic Social":68,"AI Assistant":31,"Cross-network":7,"Display":3}},
+  "2026-10":{visits:7293,users:6649,engRate:15.41,avgSec:27.2,bounce:84.59,channels:{"Paid Social":3965,"Direct":879,"Unassigned":687,"Organic Search":681,"Paid Other":640,"Referral":109,"Organic Social":78,"AI Assistant":36,"Cross-network":11,"Display":3}},
 };
 const GA_USERS = {
  "2026-01":{"Direct":5668,"Organic Search":4317,"Unassigned":4889,"Paid Social":2328,"Referral":217,"Email":83,"Organic Social":133,"Paid Other":37,"Display":1},
@@ -445,7 +445,7 @@ const GA_USERS = {
  "2026-07":{"Paid Social":19759,"Direct":6910,"Unassigned":3973,"Paid Other":3636,"Organic Search":2364,"AI Assistant":151,"Referral":119,"Organic Social":87,"Email":17,"Display":2},
  "2026-08":{"Paid Social":10734,"Direct":6598,"Paid Other":5270,"Unassigned":4019,"Organic Search":2326,"AI Assistant":172,"Organic Social":153,"Referral":102,"Display":21,"Cross-network":3},
  "2026-09":{"Paid Social":13346,"Paid Other":4777,"Direct":5160,"Unassigned":3956,"Organic Search":1864,"Organic Social":289,"Referral":164,"AI Assistant":115,"Email":27,"Display":4},
- "2026-10":{"Paid Social":2439,"Direct":729,"Unassigned":647,"Paid Other":399,"Organic Search":330,"Referral":69,"Organic Social":67,"AI Assistant":27,"Cross-network":7,"Display":3}
+ "2026-10":{"Paid Social":3762,"Direct":854,"Unassigned":686,"Organic Search":579,"Paid Other":558,"Referral":105,"Organic Social":77,"AI Assistant":31,"Cross-network":11,"Display":3}
 };
 const GA_KPI = 30000;  // 30,000 visits a month
 const GA_ROWS = [
@@ -475,7 +475,7 @@ const LP = {
  "2026-07":[["/building-resilient-communities-beyond-corporate-responsibility",18822,46.34,3.85,84.92],["/fulfilling-the-golden-years",4547,11.19,5.24,85.75],["/a-sanctuary-for-the-golden-years",2254,5.55,2.80,85.45],["/",746,1.84,22.04,68.50],["/from-junior-executive-to-group-leader-guided-by-her-father-and-a-belief-in-family-harmony",355,0.87,75.82,43.66],["/sunways-jeffrey-cheah-building-bridges-between-malaysia-and-singapore",225,0.55,34.61,49.78],["/sunway-spreads-a-little-sunshine",144,0.35,36.15,40.28],["/our-brand-evolution-since-1974",121,0.30,15.31,62.81],["/the-tech-powered-future",112,0.28,33.19,53.57]],
  "2026-08":[["/building-resilient-communities-beyond-corporate-responsibility",13834,44.19,4.58,78.67],["/fulfilling-the-golden-years",3410,10.89,4.68,85.28],["/",769,2.46,11.73,69.83],["/from-junior-executive-to-group-leader-guided-by-her-father-and-a-belief-in-family-harmony",456,1.46,78.74,47.15],["/a-sanctuary-for-the-golden-years",285,0.91,11.70,57.54],["/sunway-city-iskandar-puteri-natures-capital-city",178,0.57,12.97,65.17],["/sunways-jeffrey-cheah-building-bridges-between-malaysia-and-singapore",163,0.52,45.39,47.85],["/sunway-spreads-a-little-sunshine",131,0.42,24.82,45.80]],
  "2026-09":[["/building-resilient-communities-beyond-corporate-responsibility",17804,56.48,2.61,84.72],["/a-sanctuary-for-the-golden-years",1756,5.57,3.20,50.11],["/fulfilling-the-golden-years",638,2.02,19.31,48.90],["/",575,1.82,13.44,69.04],["/from-junior-executive-to-group-leader-guided-by-her-father-and-a-belief-in-family-harmony",407,1.29,66.78,49.14],["/sunway-city-iskandar-puteri-natures-capital-city",144,0.46,13.91,63.19],["/sunway-spreads-a-little-sunshine",126,0.40,30.47,38.89],["/fortune-times-nov-dec-2019",99,0.31,60.75,57.58],["/our-brand-evolution-since-1974",84,0.27,29.44,47.62]],
- "2026-10":[["/building-resilient-communities-beyond-corporate-responsibility",2994,58.44,2.58,93.29],["/",98,1.91,23.33,72.45],["/from-junior-executive-to-group-leader-guided-by-her-father-and-a-belief-in-family-harmony",72,1.41,39.39,54.17],["/sunway-city-iskandar-puteri-natures-capital-city",64,1.25,6.58,85.94],["/water-security-for-business-continuity",55,1.07,0.65,98.18],["/the-quay-to-solving-flash-flood-woes",49,0.96,0.65,93.88],["/making-the-world-a-better-place",45,0.88,0.02,100.00],["/how-sunway-is-tackling-the-net-zero-game",42,0.82,0.17,100.00],["/when-safety-becomes-second-nature",38,0.74,0.16,97.37]]
+ "2026-10":[["/building-resilient-communities-beyond-corporate-responsibility",3783,51.87,2.35,92.18],["/the-tech-powered-future",554,7.6,2.94,62.45],["/from-junior-executive-to-group-leader-guided-by-her-father-and-a-belief-in-family-harmony",255,3.5,99.47,48.63],["/a-sanctuary-for-the-golden-years",254,3.48,0.63,46.85],["/",129,1.77,20.85,70.54],["/sunway-city-iskandar-puteri-natures-capital-city",69,0.95,6.23,84.06],["/water-security-for-business-continuity",57,0.78,2.14,96.49],["/the-quay-to-solving-flash-flood-woes",51,0.7,0.71,94.12]]
 };
 
 // Video views by month, organic post views and paid ad views kept apart. Organic is the
@@ -492,7 +492,7 @@ const VIDEO = {
  "2026-07":{o:{facebook:152663,instagram:67163,linkedin:3482,tiktok:2010},p:{facebook:1097883,instagram:593418,tiktok:916564}},
  "2026-08":{o:{facebook:33765,instagram:24156,linkedin:7427,tiktok:2038},p:{facebook:913772,instagram:416216,threads:26223,tiktok:390493}},
  "2026-09":{o:{facebook:1087947,instagram:103041,linkedin:791,tiktok:2701},p:{facebook:1143474,instagram:307151,threads:182473,tiktok:69697}},
- "2026-10":{o:{facebook:0,instagram:29855,linkedin:0,tiktok:5832},p:{facebook:249875,instagram:40219,threads:55617,tiktok:10273}}
+ "2026-10":{o:{facebook:0,instagram:53990,linkedin:0,tiktok:9316},p:{facebook:269299,instagram:45457,threads:64105,tiktok:11314}}
 };
 const VID_TIP = {
   facebook:"Organic post video views plus views recorded against Facebook ads.",
